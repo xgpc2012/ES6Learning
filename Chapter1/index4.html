@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    //6、const在声明的同时必须初始化，let可以不用
+    //Missing initializer in const declaration
+    // const a;
+    // a = 1;
+
+    //OK
+    let a;
+    a = 1;
+
+    //OK
+    const b = 1;
+
+
+    //7、循环中的let和const
+    //循环中的const或者let每次都单独实现了绑定
+    //只存在于它被定义时候的块级作用域{} 不存在于其余地方
+
+    //var变量声明的问题
+    var arr1 = [];
+    for (var i = 0; i < 10; i++) {
+        arr1.push(function () {
+            console.log(i);
+        })
+    }
+
+    // i is still accessible here
+    // 10
+    console.log(arr1[7]());
+
+    //没有let之前的解决方案
+    //使用IIFE实现
+    var arr2 = [];
+    for (var i = 0; i < 10; i++) {
+        arr2.push(function (j) {
+            return function () {
+                console.log(j);
+            }
+        }(i))
+    }
+
+    //6
+    console.log(arr2[6]());
+
+    //使用let解决循环变量引用的问题
+    let arr3 = [];
+    for (let i = 0; i < 10; i++) {
+        arr3.push(function () {
+            console.log(i);
+        })
+    }
+
+    // i is not accessible here
+    // 此时打印i会抛出异常
+    // 7
+    console.log(arr3[7]());
+</script>
+</body>
+</html>

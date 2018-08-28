@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    //8.let或者const声明并不会导致污染全局对象
+    var a = 1;
+    //1
+    console.log(window.a);
+
+    let b = 1;
+    //undefined
+    console.log(window.b);
+
+    const c = 1;
+    //undefined
+    console.log(window.c);
+
+    //9、关于let和const的使用总结
+    // 默认使用const
+    // 当且仅当可以预料到变量将会改变时使用let
+
+</script>
+</body>
+</html>

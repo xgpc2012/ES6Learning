@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<script>
+    //2、let和const存在于块级作用域
+    //块级作用域 { }
+
+    function test(condition) {
+        if (condition) {
+            //a变量仅存在于if的{}块中 一旦出了if的{}之外就无法被访问到
+            let a = 1;
+        } else {
+            //此处无法访问到a变量 会抛出异常
+            console.log(a);
+        }
+    }
+
+    //test();
+
+    //3、用let或者const重复定义变量会抛出异常
+    //Identifier 'a' has already been declared
+    // let a = 1;
+    // let a = 2;
+
+    //Identifier 'b' has already been declared
+    // const b=1;
+    // const b=2
+
+    //4、const一旦声明后就无法被修改，但是对象的属性可以被更改(地址并没有被改变)
+
+    //Uncaught TypeError: Assignment to constant variable.
+    // const a=1;
+    // a=2;
+
+    //这样子是可行的,本质是obj实际存储的是对象的指针(地址)，并非实际的对象，实际地址是没有被改变的
+    const obj = {"name": "pc"};
+    obj.name = "CBY";
+    //CBY
+    console.log(obj.name);
+</script>
+</body>
+</html>

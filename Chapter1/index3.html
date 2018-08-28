@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>TDZ(暂时性死域)</title>
+</head>
+<body>
+
+<script>
+    //“The Temporal Dead Zone”
+    //TDZ(暂时性死域) let或者const在定义初始化之前被访问会抛出异常，在死域内无法访问变量
+    // 本质:由let/const声明的变量，当它们包含的词法环境(Lexical Environment)被实例化时会被创建
+    // 但只有在变量的词法绑定(LexicalBinding)已经被求值运算后，才能够被访问。
+
+
+
+    // if (1) {
+    //     // a is not defined
+    //     console.log(typeof a);
+    //     let a = "blue";
+    // }
+
+    var a=1;
+    if (1) {
+        // a is not defined
+        // 虽然a已经被全局定义，但是在当前块内的a是let定义的a
+        console.log(typeof a);
+        let a = "blue";
+    }
+</script>
+</body>
+</html>

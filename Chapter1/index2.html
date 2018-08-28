@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>块级作用域</title>
 </head>
 <body>
 
@@ -22,22 +22,41 @@
 
     //test();
 
-    //3、用let或者const重复定义变量会抛出异常
+    //3、用let或者const重复定义变量会抛出异常(同一作用域内)
+    //var变量声明也算一次定义
+
     //Identifier 'a' has already been declared
     // let a = 1;
     // let a = 2;
+
+    //Identifier 'a1' has already been declared
+    // var a1=1;
+    // let a1=2;
 
     //Identifier 'b' has already been declared
     // const b=1;
     // const b=2
 
-    //4、const一旦声明后就无法被修改，但是对象的属性可以被更改(地址并没有被改变)
+    //这样子是可行的
+    //var和let定义的变量不是属于同一块级作用域
+    var count = 30;
+
+    if (1) {
+        // doesn't throw an error
+        let count = 40;
+        console.log("This is OK");
+        // more code
+    }
+
+    //4、const一旦声明后就无法被修改，但是对象(引用类型)的属性可以被更改(地址并没有被改变)
 
     //Uncaught TypeError: Assignment to constant variable.
     // const a=1;
     // a=2;
 
     //这样子是可行的,本质是obj实际存储的是对象的指针(地址)，并非实际的对象，实际地址是没有被改变的
+    //也就是说const声明所创建出来的常量，在JS中只是不能再被赋值(can't re-assignment)
+    //并不是不可被改变(immutable)的，这两种概念仍然有很大的差异。
     const obj = {"name": "pc"};
     obj.name = "CBY";
     //CBY

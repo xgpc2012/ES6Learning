@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    //函数默认参数
+    //也有TDZ
+
+   function test(first=second,second) {
+       console.log(first);
+       console.log(second);
+   }
+
+   test(undefined,1);//抛出异常
+</script>
+</body>
+</html>

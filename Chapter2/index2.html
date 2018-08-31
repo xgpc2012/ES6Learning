@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    function is32Bit(c) {
+        return c.codePointAt(0) > 0xFFFF;
+    }
+
+    console.log(is32Bit("𠮷"));
+    console.log(is32Bit("我"));
+
+    //模板字面量
+    let message = `"Hello World!"`;
+    console.log(message);
+    console.log(typeof message);
+    console.log(message.length);
+
+    //多行字符串
+    let mes = "Multiline \n" +
+        "String";
+    console.log(mes);
+
+    let mes1 = `Multiline
+                String`;
+    console.log(mes1);
+</script>
+</body>
+</html>

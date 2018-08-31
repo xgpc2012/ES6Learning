@@ -38,12 +38,12 @@
     //没有let之前的解决方案
     //使用IIFE实现
     var arr2 = [];
-    for (var i = 0; i < 10; i++) {
+    for (var j = 0; j < 10; j++) {
         arr2.push(function (j) {
             return function () {
                 console.log(j);
             }
-        }(i))
+        }(j))
     }
 
     //6
@@ -51,9 +51,9 @@
 
     //使用let解决循环变量引用的问题
     let arr3 = [];
-    for (let i = 0; i < 10; i++) {
+    for (let k = 0; k < 10; k++) {
         arr3.push(function () {
-            console.log(i);
+            console.log(k);
         })
     }
 

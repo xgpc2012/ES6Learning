@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    //不定参数
+    //直接循环不定参数，而不是arguments对象
+    function pick(object, ...keys) {
+        let result = Object.create(null);
+
+        for (let i = 0; i < keys.length; i++) {
+            result[keys[i]] = object[keys[i]];
+        }
+
+        return result;
+    }
+
+    let book = {
+        "title": "11111",
+        "author": "22222",
+        "year": "2016"
+    };
+
+    console.log(pick(book, "author", "year"));
+
+    //只会计算固定参数的值
+    console.log(pick.length);//1
+
+    //不定参数的限制
+    //1、不定参数一个函数只能声明一个
+    //2、不定参数必须要放在所有参数的末尾
+
+    //会报错 道理是一样的 必须放在最后=不能声明1个以上
+    //Rest parameter must be last formal parameter
+    // function pick1(object,...keys,...keys2) {
+    //
+    // }
+
+    //会报错
+    // Rest parameter must be last formal parameter
+    // function pick1(object,...keys,p2) {
+    //
+    // }
+
+    //只允许传入一个参数的函数中不允许使用不定参数
+</script>
+</body>
+</html>

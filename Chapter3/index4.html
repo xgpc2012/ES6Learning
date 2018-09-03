@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    //arguments对象永远反映函数被调用时传入的参数 (ES5严格模式)
+    //无视剩余参数的使用
+    function checkArgs(first, ...args) {
+        console.log(args.length);
+        console.log(arguments.length);
+        console.log(args[0], arguments[0]);
+        console.log(args[1], arguments[1]);
+    }
+
+    checkArgs("a", "b");
+    //1
+    //2
+    //b a
+    //undefined "b"
+
+    //Function 构造函数拥有与函数声明形式相同的所有能力
+
+    var a=new Function("...args","return args[0]");
+
+    //1
+    console.log(a(1,2));
+</script>
+</body>
+</html>

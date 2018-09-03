@@ -6,8 +6,12 @@
 </head>
 <body>
 <script>
-    //不定参数
+    //不定参数(剩余参数) Rest parameter
     //直接循环不定参数，而不是arguments对象
+
+    //keys不包括第一个参数object 和arguments对象不一样
+    //函数的length只统计具名参数(确定参数)的值 不会统计剩余参数的值
+    //如下pick方法的length值为1
     function pick(object, ...keys) {
         let result = Object.create(null);
 
@@ -17,6 +21,9 @@
 
         return result;
     }
+
+
+    console.log(pick.length);
 
     let book = {
         "title": "11111",
@@ -30,8 +37,7 @@
     console.log(pick.length);//1
 
     //不定参数的限制
-    //1、不定参数一个函数只能声明一个
-    //2、不定参数必须要放在所有参数的末尾
+    //1、不定参数一个函数只能声明一个,不定参数必须要放在所有参数的末尾
 
     //会报错 道理是一样的 必须放在最后=不能声明1个以上
     //Rest parameter must be last formal parameter
@@ -45,7 +51,8 @@
     //
     // }
 
-    //只允许传入一个参数的函数中不允许使用不定参数
+    //2、只允许传入一个参数的函数中不允许使用不定参数
+    //比如对象字面量的setter属性中使用,因为字面量的setter属性被限定只能使用单个参数
 </script>
 </body>
 </html>

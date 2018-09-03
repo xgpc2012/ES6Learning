@@ -8,13 +8,36 @@
 <script>
     //函数默认参数
     //也有TDZ
+    //函数参数拥有各自的作用域和暂时性死区，与函数体的作用域相分离
+    // 这意味着参数的默认值不允许访问在函数体内部声明的任意变量
 
-   function test(first=second,second) {
-       console.log(first);
-       console.log(second);
-   }
+    function test(first = second, second) {
+        console.log(first);
+        console.log(second);
+    }
 
-   test(undefined,1);//抛出异常
+    //second is not defined
+    //  test(undefined,1);
+
+    function test1(first = second, second = a) {
+        var a = 1;
+        console.log(first);
+        console.log(second);
+    }
+
+    //second is not defined
+    //test1();
+
+    //用于json传参
+    function testJSON({a = 2}) {
+        console.log(a);
+    }
+
+    //2
+    testJSON({});
+
+    //1
+    testJSON({a: 1});
 </script>
 </body>
 </html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    //明确函数的双重用途
+    //当使用new时为构造函数 this指针指向创建的实例
+    //普通函数调用this会指向其余环境 通常会为window
+
+    //JS函数提供了两个不同的内部方法[[call]] [[Construct]]
+
+    //未使用new时 [[call]]会被执行
+
+    //使用new时 [[Construct]]会被执行
+    //拥有[[Construct]]的函数被称之为构造器，并非所有函数都是构造器
+
+
+    //判断ES5中的函数是如何被使用的
+
+    function Person(name) {
+        if (this instanceof Person) {
+            this.name = name;
+        } else {
+            throw new Error("you must use new with Person");
+        }
+    }
+
+    //Person("PC");
+    var p1 = new Person("PC");
+    console.log(p1);
+
+    //在不使用new的情况下仍然可能创建Person对象的实例
+    //无法区分
+    var notPerson = Person.call(p1, "CBY");
+    console.log(p1);
+
+    //ES6判断
+    function Person(name) {
+        if (typeof new.target !== "undefined") {
+            this.name = name;
+        } else {
+            throw new Error("you must use new with Person");
+        }
+    }
+
+    //可以区分
+    //会判断出不是使用new构造的
+    var notPerson = Person.call(p1, "CBY");
+    console.log(p1);
+</script>
+</body>
+</html>

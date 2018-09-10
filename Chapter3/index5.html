@@ -10,11 +10,57 @@
     //Math.max处理一个数组中的最大值
     //ES5版本 使用apply方法借用
     //实际是使用了额外的语法混淆了代码的真实意图
-    var arr=[1,2,3,4,5];
+    var arr = [1, 2, 3, 4, 5];
     //5
-    console.log(Math.max.apply(Math,arr));
+    console.log(Math.max.apply(Math, arr));
 
     //ES6
+    //扩展运算符允许将一个数组分割，并将各个项作为分离的参数传给函数
+    //此时的...应对的是传入的实参，剩余参数是函数定义时的形参
+    //5
+    console.log(Math.max(...arr));
+
+    //扩展运算符可以与其他参数混用
+    //7
+    console.log(Math.max(...arr, 7));
+
+    //函数的name属性
+    function b() {
+
+    }
+
+    var a = function c() {
+
+    };
+    console.log(a.name);
+    console.log(b.name);
+
+    var doSomething = function doSomethingElse() {
+
+    }
+
+    var person = {
+        get firstName() {
+
+        },
+        sayName: function () {
+            console.log(this.name);
+        }
+    }
+
+    //doSomethingElse
+    console.log(doSomething.name);
+    console.log(person.sayName.name);
+
+    //getter和setter都只能用getOwnPropertyDescriptor来检索
+    var descriptor = Object.getOwnPropertyDescriptor(person, "firstName");
+    //带有get前缀
+    console.log(descriptor.get.name);
+
+    //使用bind创建的函数在名称属性值之前有 bound 前缀
+
+    //使用Function构造器创建的函数 其名称属性会有 anonymous 前缀
+
 </script>
 </body>
 </html>

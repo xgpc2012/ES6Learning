@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    //块级函数
+
+    "use strict";
+    //ES5严格模式下会报错
+    if (true) {
+        function a() {
+            
+        }
+    }
+
+    //ES6会将b方法视为块级声明，只允许它在被定义的代码块内部被访问
+    if (true) {
+        function b() {
+
+        }
+        b();
+    }
+
+    //undefined
+    console.log(typeof b);
+
+    //使用let定义的块级函数不会提升，会进入临时性死区
+
+</script>
+</body>
+</html>

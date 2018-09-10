@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    //箭头函数 Arrow Function
+    //没有this super arguments 也没有new.target 这些都由最靠近的非箭头函数来决定
+    //不能被使用new调用
+    //没有原型
+    //不能更改this
+    //没有arguments
+    //不允许重复的具名参数
+    
+    var reflect = value => value;
+    
+    // 等价于
+    
+    // var reflect=function (value) {
+    //     return value;
+    // }
+    console.log(reflect("1"));
+    
+    //箭头函数
+    //以函数参数为开头
+    //紧跟着的是箭头
+    //接下来是函数体
+    
+    //多参数 需要用到括号
+    
+    var sum = (a1, a2) => a1 + a2;
+    
+    // 等价于
+    
+    // var sum=function (a1,a2) {
+    //     return a1+a2;
+    // }
+    
+    console.log(sum(1, 2));
+    
+    //没有参数
+    
+    var noParams = () => 1;
+    console.log(noParams());
+    
+    //空函数
+    
+    var eFunction = () => {
+    };
+    
+    //返回JSON
+    //JSON外必须包裹一层圆括号
+    
+    var returnJSON = () => ({"id": "1", "name": "PC"});
+    console.log(returnJSON());
+    
+    //使用传统函数(function(){})()   (function(){}()) 都可行
+    
+    //箭头函数只能 (()=>{})()
+    
+    //没有this绑定
+    //箭头函数this的值由包含它的函数决定，无法使用bind,call,apply
+
+    //不存在[[Construct]]方法 不能被用于new操作符
+    
+    var obj = {
+        id: 1,
+        init: function () {
+            document.addEventListener("click", () => {
+                //this指向obj对象而不是document
+                console.log(this);
+                this.doSomething();
+            })
+        },
+        doSomething() {
+            console.log("!!!!!!!!!!");
+        }
+    };
+
+    obj.init();
+
+    var values=[1,3,2];
+    var sort1=values.sort((a,b)=>a-b);
+
+    console.log(sort1);
+
+    //没有arguments对象，但是仍然能够访问包含它的函数的arguments对象
+
+
+    //箭头函数能在任意位置替代你使用的匿名函数，例如回调函数
+</script>
+</body>
+</html>

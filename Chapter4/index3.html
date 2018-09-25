@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    //重复的对象字面量属性
+    //ES6中定义重复变量 排在后面的覆盖前面的
+
+    "use strict";
+    //ES6中不会出错 ES5中会出错
+    var person = {
+        name: "1",
+        name: "2"
+    }
+
+    console.log(person.name);
+
+    //自有属性的枚举属性
+    //1、所有的数字类键 按升序排列
+    //2、所有的字符串类键 按被添加到对象的顺序排列
+    //3、所有的符号类型键 也按被添加到对象的顺序排列
+</script>
+</body>
+</html>

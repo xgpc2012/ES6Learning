@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+    //Super引用在多重继承的情况下十分有用
+    let person={
+        getGreeting(){
+            return "Hello";
+        }
+    }
+
+    //这种会报错
+    // let friend={
+    //     getGreeting(){
+    //         return Object.getPrototypeOf(this).getGreeting.call(this)+" Hi";
+    //     }
+    // }
+
+    //这种是正常的
+    //super会正确的指向friend
+    let friend={
+        getGreeting(){
+            return super.getGreeting()+" Hi";
+        }
+    }
+
+    Object.setPrototypeOf(friend,person);
+
+    let relative=Object.create(friend);
+
+    //relative.getGreeting调用friend的getGreeting方法
+    //friend的getGreeting方法又会返回friend对象
+
+    //递归调用导致栈溢出报错
+    //Maximum call stack size exceeded
+    console.log(relative.getGreeting());
+
+
+</script>
+</html>

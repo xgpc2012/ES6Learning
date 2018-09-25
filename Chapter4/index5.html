@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    //简化原型访问的Super引用
+    //eg:如果你想重写对象实例的方法，又需要调用与它同名的原型方法
+
+    //ES5解决方式
+    let person = {
+        getGreeting() {
+            return "Hello";
+        }
+    }
+
+    let friend = {
+        getGreeting() {
+            //调用friend原型上的getGreeting方法
+            return Object.getPrototypeOf(this).getGreeting.call(this) + " Hi";
+        }
+    }
+
+    Object.setPrototypeOf(friend, person);
+    console.log(friend.getGreeting());
+    console.log(Object.getPrototypeOf(friend) === person);
+
+
+    //ES6写法
+    let person1 = {
+        getGreeting() {
+            return "Hello";
+        }
+    }
+
+    let friend1 = {
+        getGreeting() {
+            //调用friend原型上的getGreeting方法
+            //一样的效果
+            return super.getGreeting() + " Hi";
+        }
+    }
+
+    Object.setPrototypeOf(friend1, person1);
+    console.log(friend1.getGreeting());
+    console.log(Object.getPrototypeOf(friend1) === person1);
+
+</script>
+</body>
+</html>

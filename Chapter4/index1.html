@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    //属性初始化器
+    //当对象字面量中的属性只有名称时，JS引擎会在作用域查找同名变量，若找到便赋值
+    //简化对象字面量初始化
+
+    function createPerson(name, age) {
+        return {
+            name,
+            age
+        }
+    }
+
+    var obj = createPerson("PC", "24");
+    console.log(obj);
+
+    //方法简写
+    //省略冒号和function关键字
+    //这种速记语法也被称为方法简写语法(concise method syntax)
+    var person = {
+        // "name": "PC",
+        "1":"2",
+        sayName() {
+            console.log(this.name);
+        }
+    }
+
+    person.sayName();
+    function a(){
+
+    }
+    var a1=new a();
+    console.log(a1.__proto__);
+
+    //需计算属性名
+
+    var person = {
+            "second name": "CBY"
+        },
+        lastName = "last name";
+
+    person["first name"] = "P";
+    person[lastName] = "C";
+
+    console.log(person["first name"]);
+    console.log(person[lastName]);
+    console.log(person["second name"]);
+
+    var lastName1=["last name1"];
+    var name="name"
+    //对象字面量里面的方括号代表该属性需要被计算,其结果是一个字符串
+    //可以包含表达式 前缀 后缀 等等
+    var person1={
+        ["1"+lastName1]:"C",
+        ["first "+name]:"CBY"
+    };
+
+    console.log(person1["1"+lastName1]);
+    console.log(person1["first name"]);
+</script>
+</body>
+</html>

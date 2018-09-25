@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    //更强大的原型
+    //Object.setPrototypeOf修改原型
+    //第一个参数 需要被修改原型的对象
+    //第二个参数 将会成为前者原型的对象
+    Object.setPrototypeOf({}, null);
+
+    let person={
+        getGreeting(){
+            return "Hello";
+        }
+    };
+
+    let dog={
+        getGreeting(){
+            return "Woof";
+        }
+    };
+
+    //以person为对象创建friend对象
+    let friend=Object.create(person);
+
+    //调用person上的方法
+    console.log(friend.getGreeting());
+    //Hello
+
+    //重新设置friend的原型为dog
+    Object.setPrototypeOf(friend,dog);
+
+    //此时调用dog上的方法
+    console.log(friend.getGreeting());
+    //Woof
+
+    //setPrototypeOf方法会解除与原有原型的关联并使其关联新的原型
+
+    //对象原型的真实值储存在内部专用属性[[Prototype]]
+
+    //getPrototypeOf获取原型 即获取[[Prototype]]的值
+
+    //setPrototypeOf修改原型 即修改[[Prototype]]的值
+</script>
+</body>
+</html>

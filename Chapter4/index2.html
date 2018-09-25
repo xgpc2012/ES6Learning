@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    //新的对象方法
+
+    //Object.is() 比较两个数大小
+    //此方法接收两个参数 并会在二者的值相等时返回true
+    console.log(Object.is(NaN, NaN));
+    console.log(Object.is(+0, -0));
+    console.log(Object.is(5, "5"));
+    console.log(Object.is(5, 5));
+
+    //Object.assign()
+    
+    //mixin
+    //混入 一个对象从另一个对象中接收属性和方法
+    //mixin函数在supplier对象的自由属性上进行迭代
+    //将这些属性复制到receiver对象上(浅复制，仅复制其引用)
+    function mixin(receiver, supplier) {
+        Object.keys(supplier).forEach((function (key) {
+            receiver[key] = supplier[key];
+        }))
+
+        return receiver;
+    }
+    
+    function EventTarget() {
+        
+    }
+
+    EventTarget.prototype = {
+        constructor: EventTarget,
+        emit: function (value) {
+            console.log(value);
+        },
+        on: function () {
+            
+        }
+    }
+
+    var myObject = {};
+    //mixin(myObject,EventTarget.prototype);
+    // Object.assign(myObject,EventTarget.prototype);
+    //
+    // myObject.emit("someThingChanged")
+
+    //使用Object.assign()重写
+    Object.assign(myObject, EventTarget.prototype);
+
+    myObject.emit("someThingChanged")
+
+    //Object.assign 可接收多个参数，后面的供应者会覆盖前面的供应者
+    //将公共方法标准化
+
+    //Object.assign并未在接收者上创建访问器属性，即使供应者具有访问器属性
+    var receiver = {},
+        supplier = {
+            get name() {
+                return "1";
+            }
+        };
+
+    Object.assign(receiver,supplier);
+
+    var descriptor=Object.getOwnPropertyDescriptor(receiver,"name");
+
+    console.log(descriptor.value);//1
+    console.log(descriptor.get);//undefined
+</script>
+</body>
+</html>

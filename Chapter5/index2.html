@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    //解构
+    //默认值
+
+    let node = {
+        type: "Identifier",
+        name: "foo"
+    }
+
+    let {type, name, value = true} = node;
+
+    console.log(type);
+    console.log(name);
+    console.log(value);
+
+    //为非同名局部变量赋值
+    let node1={
+        type: "Identifier",
+        name: "foo",
+    }
+
+    let {type: localType, name :localName,age:localAge="18"} = node1;
+
+    console.log(localType);
+    console.log(localName);
+    console.log(localAge);
+</script>
+</body>
+</html>

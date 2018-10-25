@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    //解构
+    //数组解构
+    let colors=["yellow","blue","red"];
+
+    let [firstColor,secondColor]= colors;
+
+    //只对指定位置的变量赋值
+    let [,,thirdColor]= colors;
+    console.log(firstColor);
+    console.log(secondColor);
+    console.log(thirdColor);
+
+    //解构赋值
+    let colors1=["yellow","blue","red"],
+        firstColor1="1",
+        secondColor1="2";
+    [firstColor1,secondColor1]=colors1;
+    console.log(firstColor1);
+    console.log(secondColor1);
+
+    //解构实现变量互换
+
+    let a = 1,
+        b = 2;
+
+    [a,b]=[b,a];
+    console.log(a);//2
+    console.log(b);//1
+</script>
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    //解构
+    //数组解构
+    let colors = ["red"];
+
+    //默认值
+
+    let [firstColor, secondColor = "green"] = colors;
+    console.log(firstColor);
+    console.log(secondColor);
+
+    //嵌套数组解构
+    //数组中可以无限深入去解构
+    let colors1 = ["red", ["yellow", "blue"]];
+
+    let [color1, [color2]] = colors1;
+    console.log(color1);
+    console.log(color2);
+
+    //不定元素
+
+    let colors2=["red", "yellow", "blue"];
+
+    let [firstColor1,...restColors]=colors2;
+    console.log(firstColor1);
+    console.log(restColors);
+    console.log(restColors[0]);
+    console.log(restColors[1]);
+</script>
+</body>
+</html>

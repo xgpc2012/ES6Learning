@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    //解构
+    //对象解构在一个赋值操作符左边放置一个对象字面量
+    let json = {
+        a: "1",
+        b: "2"
+    };
+
+    //简化从JSON对象中提取数据
+    let {a, b} = json;
+    console.log(a);
+    console.log(b);
+
+    let node = {
+            type: "Identifier",
+            name: "foo"
+        },
+        type = "Literal",
+        name = 5;
+
+    ({type, name} = node);
+
+    console.log(type);
+    console.log(name);
+</script>
+</body>
+</html>

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    //解构
+    //嵌套对象解构
+    //解构模式可以用于任意层级深度的对象(平时主要为后台返回的JSON格式数据)
+    let obj = {
+        name: "PC",
+        data: {
+            someList: [1, 2, 3]
+        }
+    };
+
+    let {data: {someList: myList}} = obj;
+
+    console.log(myList);
+</script>
+</body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    //解构
+    //解构参数赋默认值、非同名参数解构均支持
+    function test({name: localName, age, sex = "male"}) {
+        console.log(localName);
+        console.log(age);
+        console.log(sex);
+    }
+
+    //会报错
+    //test();
+
+    function test1({name: localName, age, sex = "male"} = {}) {
+        console.log(localName);
+        console.log(age);
+        console.log(sex);
+    }
+
+    //不会报错
+    test1();
+</script>
+</body>
+</html>

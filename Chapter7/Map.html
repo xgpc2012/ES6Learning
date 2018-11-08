@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    //Set&Map
+
+    let map1 = new Map();
+
+    map1.set(5, "a");
+    map1.set("5", "b");
+
+    //2
+    console.log(map1.size);
+    //"a"
+    console.log(map1.get(5));
+
+    map1.delete(5);
+    console.log(map1.size);
+
+    map1.clear();
+    //0
+    console.log(map1.size);
+
+    let map2 = new Map();
+
+    map2.set("age", "24");
+    map2.set("name", "CBY");
+
+    map2.forEach(function (value, key, map) {
+        console.log(key + "=====" + value);
+        console.log(map === map2);
+    })
+</script>
+</body>
+</html>

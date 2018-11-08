@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    //Set&Map
+
+    let set1 = new Set();
+
+    set1.add(5);
+
+    set1.add("5");
+
+    //会被忽略
+    set1.add(5);
+    //set结构不添加重复的值
+    console.log(set1.size);
+
+    //true
+    console.log(set1.has(5));
+
+    set1.delete(5);
+    //1
+    console.log(set1.size);
+
+    set1.clear();
+    //0
+    console.log(set1.size);
+
+    //使用Set进行数组去重
+
+    var arr1=[1,2,2,3,3,4];
+
+    //[1,2,3,4]
+    console.log(Array.from(new Set(arr1)));
+</script>
+</body>
+</html>

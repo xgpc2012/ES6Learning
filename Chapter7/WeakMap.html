@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    //WeakMap
+
+    let map1 = new Map();
+    map1.set("a", "1");
+    map1.set("b", {});
+
+    let weakMap1 = new WeakMap();
+    let key1 = {};
+    weakMap1.set(key1, "a");
+    console.log(weakMap1.has(key1));
+    weakMap1.delete(key1);
+    console.log(weakMap1.has(key1));
+</script>
+</body>
+</html>

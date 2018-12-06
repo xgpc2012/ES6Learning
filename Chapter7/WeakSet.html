@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    //WeakSet
+
+    let set1 = new Set();
+    let key1 = {},
+        key2 = {};
+
+    set1.add(key1);
+    set1.add(key2);
+    //2
+    console.log(set1.size);
+
+    key1 = null;
+    //仍然是2
+    //强引用 内存会泄露 不会自动清空
+    console.log(set1.size);
+
+    let wSet1 = new WeakSet();
+    let wKey1 = {},
+        wKey2 = {};
+    wSet1.add(wKey1);
+    wSet1.add(wKey2);
+    wKey1 = null;
+    console.log(wSet1.has(wKey1));
+    console.log(wSet1);
+</script>
+</body>
+</html>

@@ -16,14 +16,14 @@
     //静态方法
     PersonType.create = function (name) {
         return new PersonType(name);
-    }
+    };
     
     //实例方法
     PersonType.prototype.sayName = function () {
         console.log(this.name);
-    }
+    };
 
-    var person=PersonType.create("PC")
+    var person=PersonType.create("PC");
 
     //ES6定义静态方法
 

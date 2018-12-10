@@ -9,7 +9,7 @@
 </body>
 <script>
     //使用派生类实现继承
-    class Reactangle {
+    class Rectangle {
         constructor(length, width) {
             this.length = length;
             this.width = width;
@@ -21,7 +21,7 @@
     }
 
     //Square继承自Rectangle 被称之为派生类(derived classes)
-    class Square extends Reactangle {
+    class Square extends Rectangle {
         constructor(length) {
             //super为调用Rectangle的构造器
             super(length, length)
@@ -32,24 +32,24 @@
 
     console.log(square.getArea());
     console.log(square instanceof Square);
-    console.log(square instanceof Reactangle);
+    console.log(square instanceof Rectangle);
 
     //子类不定义constructor super方法会自动调用并传入创建实例时传的参数
 
-    class Square1 extends Reactangle {
+    class Square1 extends Rectangle {
 
     }
 
     //等价于
     //不过由于Square实际只需要单个参数，所以最好手动定义构造器函数
-    class Square1 extends Reactangle {
+    class Square1 extends Rectangle {
         constructor(...Args) {
             super(...Args);
         }
     }
 
     //super使用时需注意
-    //1、只能在派生类中使用
+    //1、只能在派生类中的构造函数中使用
     //2、在构造器函数中 必须先调用super 再访问this super()负责初始化this
 </script>
 </html>

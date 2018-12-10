@@ -19,14 +19,15 @@
         sayName() {
             console.log(this.name);
         }
-    }
+    };
 
     let person = new PersonClassA("pc");
     person.sayName();
     console.log(Object.getPrototypeOf(person));
+
     //命名
 
-    let PersonClass = class PersonClass2 {
+    let PersonClassB = class PersonClass2 {
         constructor(name) {
             this.name = name;
         }
@@ -34,9 +35,9 @@
         sayName() {
             console.log(this.name);
         }
-    }
+    };
 
-    let person1 = new PersonClass("pc");
+    let person1 = new PersonClassB("pc");
     person1.sayName();
 
     //PersonClass2只存在于类定义中

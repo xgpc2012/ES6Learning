@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+    //内建对象的继承
+    function MyArray() {
+        Array.call(this, arguments);
+    }
+
+    MyArray.prototype = Object.create(Array.prototype, {
+        constructor: {
+            value: MyArray,
+            writable: true,
+            configurable: true,
+            enumerable: true
+        }
+    });
+
+    let colors = new MyArray();
+    colors[0] = "red";
+    console.log(colors.length);
+
+    colors.length = 0;
+    console.log(colors[0]);
+
+    class MyArray2 extends Array {
+
+    }
+
+    let colors1 = new MyArray2();
+    colors1[0] = "red";
+    console.log(colors1.length);
+
+    colors1.length = 0;
+    console.log(colors1[0]);
+</script>
+</html>

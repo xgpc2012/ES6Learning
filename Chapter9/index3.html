@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+    //类定义访问器属性
+
+    class CustomHTMLElement {
+        constructor(element) {
+            this.element = element;
+        }
+
+        get html() {
+            return this.element.innerHTML;
+        }
+
+        set html(value) {
+            this.element.innerHTML = value;
+        }
+    }
+
+    let descriptor=Object.getOwnPropertyDescriptor(CustomHTMLElement.prototype,"html");
+    console.log(descriptor);
+</script>
+</html>

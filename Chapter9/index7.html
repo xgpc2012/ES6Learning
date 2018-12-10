@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+    //继承静态成员
+    class Reactangle {
+        constructor(length, width) {
+            this.length = length;
+            this.width = width;
+        }
+
+        getArea() {
+            return this.length * this.width;
+        }
+
+        static create(length, width) {
+            return new Reactangle(length, width);
+        }
+    }
+
+    class Square extends Reactangle {
+        constructor(length) {
+            super(length, length);
+        }
+    }
+
+    var rect=Square.create(3,4);
+    console.log(rect instanceof Reactangle);
+    console.log(rect.getArea());
+    console.log(rect instanceof Square);
+</script>
+</html>

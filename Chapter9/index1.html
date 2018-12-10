@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+    //JavaScript中的类
+    //ES5近类结构
+
+    function PersonType(name) {
+        this.name = name;
+    }
+
+    PersonType.prototype.sayName = function () {
+        console.log(this.name);
+    }
+
+    var person = new PersonType("PC");
+
+    person.sayName();
+
+    console.log(person instanceof PersonType);
+    console.log(person instanceof Object);
+    console.log(Object.getPrototypeOf(person));
+    //ES6类声明
+
+    //除了constructor没有其他保留的方法名
+    //类声明本质是原型定义表示方法的语法糖
+    class PersonClass {
+        constructor(name) {
+            this.name = name;
+        }
+
+        //等价于PersonType.prototype.sayName
+        //即原型上注册方法
+        sayName() {
+            console.log(this.name);
+        }
+    }
+
+    let person2 = new PersonClass("CBY");
+    person2.sayName();
+
+    console.log(person2 instanceof PersonClass);
+    console.log(person2 instanceof Object);
+
+    //类属性不能被修改
+    //错误
+    //PersonClass.prototype={};
+
+    //类声明类似于let声明 不能被提升 也有TDZ
+    //类声明中的所有代码将自动运行在严格模式下
+    //类中的所有方法都不可被枚举
+    //每个类都有一个名为[[construct]]的方法
+    //使用除new关键字意外的方式调用类的构造函数会导致程序抛出错误
+    //在类中修改类名会导致程序报错
+
+    //类的名称只在类中为常量,不能在内部被修改，但可以在外部修改
+    //内部相当于const声明 外部相当于let声明
+
+</script>
+</html>

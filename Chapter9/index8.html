@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+    //从表达式中派生类
+    function Rectangle(length, width) {
+        this.length = length;
+        this.width = width;
+    }
+
+    Rectangle.prototype.getArea = function () {
+        return this.length * this.width;
+    }
+
+    class Square extends Rectangle {
+        constructor(length){
+            super(length,length);
+        }
+    }
+
+    let x=new Square(3);
+    console.log(x.getArea());
+    console.log(x instanceof Rectangle);
+</script>
+</html>

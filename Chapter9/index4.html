@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+    //静态成员
+    function PersonType(name) {
+        this.name = name;
+    }
+    
+    //静态方法
+    PersonType.create = function (name) {
+        return new PersonType(name);
+    }
+    
+    //实例方法
+    PersonType.prototype.sayName = function () {
+        console.log(this.name);
+    }
+
+    var person=PersonType.create("PC")
+
+    //ES6定义静态方法
+
+    class PersonClass{
+        constructor(name){
+            this.name=name;
+        }
+        sayName(){
+            console.log(this.name);
+        }
+        static create(name){
+            return new  PersonClass(name);
+        }
+    }
+
+    //静态成员不能用实例访问,只能用类自身来访问他们
+    let person=PersonClass.create("PC");
+
+</script>
+</html>

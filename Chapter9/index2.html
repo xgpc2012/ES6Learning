@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+
+    //类表达式
+    //匿名
+    let PersonClassA = class {
+        constructor(name) {
+            this.name = name;
+        }
+
+        sayName() {
+            console.log(this.name);
+        }
+    }
+
+    let person = new PersonClassA("pc");
+    person.sayName();
+    console.log(Object.getPrototypeOf(person));
+    //命名
+
+    let PersonClass = class PersonClass2 {
+        constructor(name) {
+            this.name = name;
+        }
+
+        sayName() {
+            console.log(this.name);
+        }
+    }
+
+    let person1 = new PersonClass("pc");
+    person1.sayName();
+
+    //PersonClass2只存在于类定义中
+</script>
+</html>

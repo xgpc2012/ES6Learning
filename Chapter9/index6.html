@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+    //屏蔽类方法
+    //派生类中的方法总是会屏蔽基类的同名方法
+    class Reactangle {
+        constructor(length, width) {
+            this.length = length;
+            this.width = width;
+        }
+
+        getArea() {
+            return this.length * this.width;
+        }
+    }
+
+    class Square extends Reactangle {
+        constructor(length) {
+            super(length, length);
+        }
+
+        //重写并屏蔽父类的getArea方法
+        //父类的getArea不能再Square的任何实例上被调用
+        //但是可以在类定义中使用super.getArea进行调用
+        // getArea() {
+        //     return this.length * this.length;
+        // }
+        getArea() {
+            //调用父类的getArea方法
+            return super.getArea();
+        }
+    }
+</script>
+</html>

@@ -27,3 +27,12 @@ ES6总结笔记
 
 #Chapter8
 #Iterators and Generators
+
+#Chapter 9
+#Introducing JavaScript Classes
+
+#Chapter 10 
+#Improved Array Capabilities
+
+#Chapter 11
+#Promises and Asynchronous Programming

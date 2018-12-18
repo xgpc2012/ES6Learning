@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    //创建数组
+    //Array.of和Array.from
+    //Array.of()总是创建一个包含所有参数的数组
+    //Array构造函数会受到数值类型的影响
+    let items = Array.of(1, 2);
+    console.log(items.length);
+    console.log(items[0]);
+    console.log(items[1]);
+
+    let items1 = Array.of(2);
+    console.log(items1.length);
+    console.log(items1[0]);
+
+    //Array.from()将类数组或者伪数组(可迭代、索引)转化为真实数组
+    //ES5实现 Array.prototype.slice
+    //第一个参数 伪数组
+    //第二个参数 mapFn 映射函数
+    function doSomeThing() {
+        var args = Array.from(arguments);
+    }
+
+    function translate() {
+        return Array.from(arguments, (value) => value + 1);
+    }
+
+    console.log(translate(1, 2, 3));
+
+    let helper={
+        diff:2,
+        add(value){
+            return value+this.diff;
+        }
+    }
+
+    function translate1() {
+        return Array.from(arguments, helper.add,helper);
+    }
+
+    console.log(translate1(1, 2, 3));
+</script>
+</body>
+</html>

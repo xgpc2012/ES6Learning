@@ -25,6 +25,17 @@
 
     //不会报错
     test1();
+
+    const defaults={
+        name:"PC",
+        age:"24"
+    };
+
+    function setCookie({name,age}=defaults) {
+        console.log(name,age);
+    }
+
+    setCookie();
 </script>
 </body>
 </html>

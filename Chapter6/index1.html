@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    //Symbol
+
+    let uid=Symbol.for("uid");
+    let object={
+        [uid]:"12345"
+    };
+    console.log(Object.getOwnPropertySymbols(object));
+
+</script>
+</body>
+</html>

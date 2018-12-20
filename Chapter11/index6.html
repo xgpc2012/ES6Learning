@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<script>
+    //在Promise链中返回Promise
+    let p1 = new Promise(function (resolve, reject) {
+        resolve(1);
+    })
+
+    let p2 = new Promise(function (resolve, reject) {
+        resolve(2);
+    })
+
+    p1.then(function (val) {
+        //1
+        console.log(val);
+        return p2;
+    }).then(function (val) {
+        //2
+        console.log(val);
+    })
+
+    let p3 = new Promise(function (resolve, reject) {
+        resolve(3);
+    })
+
+    let p4 = new Promise(function (resolve, reject) {
+        //拒绝状态才触发
+        reject(4);
+    })
+
+    p3.then(function (val) {
+        //3
+        console.log(val);
+        return p4;
+    }).catch(function (val) {
+        //4
+        console.log(val);
+    })
+
+</script>
+</body>
+</html>

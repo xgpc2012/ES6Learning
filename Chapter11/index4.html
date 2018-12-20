@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<script>
+    //执行器错误
+    let promise = new Promise(function (resolve, reject) {
+        try {
+            throw new Error("抛出异常")
+        } catch (e) {
+            reject(e)
+        }
+    })
+
+    //所有错误会被捕获并传入拒绝处理程序
+    promise.catch(function (error) {
+        //抛出异常
+        console.log(error.message);
+    })
+
+    //全局Promise拒绝处理
+
+    let rejected=Promise.reject(2);
+
+    rejected.catch(function (val) {
+        console.log(val);
+    })
+
+    window.onrejectionhandled=function (event) {
+        console.log(event)
+    }
+
+    rejected=Promise.reject(new Error("抛出异常"));
+</script>
+</body>
+</html>

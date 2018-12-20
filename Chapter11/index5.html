@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<script>
+    //串联Promise(链式调用)
+    let p1 = new Promise(function (resolve, reject) {
+        resolve(1)
+    })
+
+    p1.then(function (val) {
+        console.log(val);
+    }).then(function (val) {
+        console.log("Finished");
+    })
+
+    //p1.then本质返回了一个promise
+
+    //捕获错误
+
+    p1.then(function (val) {
+        throw new Error("抛出异常");
+    }).catch(function (e) {
+        console.log(e.message)
+    })
+
+    let p2 = new Promise(function (resolve, reject) {
+        throw new Error("抛出异常");
+    });
+
+    //链式Promise调用可以感知到链中其他Promise的错误
+    p2.catch(function (e) {
+        console.log(e.message);
+        throw new Error("抛出异常2");
+    }).catch(function (e) {
+        console.log(e.message)
+    })
+
+    //Promise链的返回值
+
+    let p3 = new Promise(function (resolve, reject) {
+        resolve(1);
+    })
+
+    //调用时返回值 可以传入下一个promise处理函数
+    p3.then(function (val) {
+        //1
+        console.log(val);
+        return val + 1
+    }).then(function (val) {
+        //2
+        console.log(val);
+    })
+
+    let p4 = new Promise(function (resolve, reject) {
+        reject(2);
+    })
+
+    p4.catch(function (val) {
+        //2
+        console.log(val);
+        return val + 1
+    }).then(function (val) {
+        //3
+        console.log(val);
+    })
+
+</script>
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<script>
+    //非Promise的thenable对象
+
+    //成功态
+    let thenable1={
+        then:function (resolve,reject) {
+            resolve(1)
+        }
+    }
+
+    let p1=Promise.resolve(thenable1);
+
+    p1.then(function (val) {
+        console.log(val);
+    })
+
+    //拒绝态
+    let thenable2={
+        then:function (resolve,reject) {
+            reject(2)
+        }
+    }
+
+    let p2=Promise.resolve(thenable2);
+
+    p2.then(function (val) {
+        console.log(val);
+    })
+
+    //如果向Promise.resolve/reject()方法中传入一个Promise
+    //那么这个Promise将会被直接返回
+</script>
+</body>
+</html>

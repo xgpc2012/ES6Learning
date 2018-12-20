@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>Chapter11 Promises</h1>
+<p>异步编程背景
+
+<p>回调函数实现异步的问题-回调地狱</p>
+<p>Promise是异步操作结果的占位符 取代回调函数</p>
+
+<p>Promise的生命周期</p>
+<p>先是处于进行中(pending)的状态，此时操作尚未完成 是未处理(unsettled)的</p>
+
+<p>操作结束后 进入以下两个状态中的一个</p>
+
+<p>Fulfilled 异步操作成功完成</p>
+<p>Rejected 由于程序错误或一些其他原因 Promise异步操作未能成功</p>
+<p>[[PromiseState]]用来表示Promise的3种状态</p>
+<p>Pending→Fulfilled</p>
+<p>Pending→Rejected</p>
+
+
+<script>
+    //所有Promise都有then方法 接收两个参数
+    //第一个参数为状态变为fulfilled时要调用的函数
+    //第二个参数为状态变为rejected时要调用的函数
+    const a = 1;
+    let pro1 = new Promise((resolve, reject) => {
+        if (a == 1) {
+            resolve(1);
+        } else {
+            reject(2);
+        }
+    });
+
+    pro1.then(function (val) {
+        //完成
+        console.log(val);
+    }, function (val) {
+        //拒绝
+        console.log(val);
+    });
+
+    //只监听成功完成的时候
+    pro1.then(function (val) {
+        console.log(val);
+    });
+
+    //只监听被拒绝的时候
+    pro1.then(null, function (val) {
+        console.log(val);
+    });
+
+    //同被拒绝
+    //相当于只传入拒绝处理程序
+    pro1.catch(function (val) {
+        console.log(val);
+    })
+
+    //成功状态下仍然可以添加完成处理程序
+
+    pro1.then(function () {
+        //...
+        pro1.then(function () {
+            //...
+        })
+    })
+</script>
+</body>
+</html>

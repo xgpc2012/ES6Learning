@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<script>
+    //响应多个Promise
+
+    //Promise.all() 且关系
+    //只接受一个参数并返回Promise
+    //该参数是一个含有多个受监视的Promise的可迭代对象
+
+    let p1 = new Promise(function (resolve, reject) {
+        resolve(1);
+    })
+
+    let p2 = new Promise(function (resolve, reject) {
+        resolve(2);
+    })
+
+    let p3 = new Promise(function (resolve, reject) {
+        resolve(3);
+    })
+
+    let p4 = new Promise(function (resolve, reject) {
+        reject(4);
+    })
+
+    let p5 = new Promise(function (resolve, reject) {
+        reject(45);
+    })
+
+    let pa1 = Promise.all([p1, p2, p3]);
+
+    //当p1 p2 p3 都处于完成态时触发p4的完成处理函数
+    //值按照传入顺序排列
+    pa1.then(function (val) {
+        //数组
+        //[1,2,3]
+        console.log(val);
+    })
+
+    //只要有一个被拒绝 那么拒绝处理函数立即被调用
+
+    let pa2 = Promise.all([p1, p2, p3, p4, p5]);
+
+    pa2.then(function (val) {
+        //console.log("完成")
+    }).catch(function (val) {
+        console.log("被拒绝");
+        //4 reject的返回
+        console.log(val);
+    })
+
+    //Promise.race() 或关系
+    //有一个完成 就触发完成处理程序
+    //同理 有一个被拒绝 就先触发拒绝完成程序
+    //根据完成的顺序来
+    let pr1 = Promise.race([p1, p2, p3, p4]);
+    pr1.then(function (val) {
+        console.log("完成");
+        //打印1 第一个完成就结束了
+        console.log(val);
+    }).catch(function (val) {
+        console.log("被拒绝");
+        console.log(val);
+    })
+
+    let p6 = new Promise(function (resolve, reject) {
+        setTimeout(resolve(6),0);
+    })
+
+    let pr2 = Promise.race([p4, p6]);
+
+    pr2.catch(function (val) {
+        //打印4 因为4先被拒绝
+        console.log(val);
+    })
+</script>
+</body>
+</html>

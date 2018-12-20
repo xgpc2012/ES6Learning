@@ -5,21 +5,38 @@
     <title>Title</title>
 </head>
 <body>
+
 <script>
-    //Chapter11 Promises
-    //异步编程背景
+    //创建未完成的Promise
+    //Promise的执行器会立即执行,然后才执行后续流程中的代码
+    let promise = new Promise(function (resolve, reject) {
+        console.log("Promise");
+        resolve();
+    });
 
-    //回调函数实现异步的问题-回调地狱
-    //Promise是异步操作结果的占位符 取代回调函数
+    console.log("Hi");
 
-    //Promise的生命周期
-    //先是处于进行中(pending)的状态，此时操作尚未完成 是未处理(unsettled)的
+    //完成处理程序和拒绝处理程序总是在执行器完成后被添加到任务队列的末尾
+    //类似于setTimeout,回调程序作为异步函数添加到队列
+    promise.then(function () {
+        console.log("resolved");
+    })
 
-    //操作结束后 进入以下两个状态中的一个
+    //Promise Hi resolved
 
-    //Fulfilled 异步操作成功完成
-    //Rejected  由于程序错误或一些其他原因 Promise异步操作未能成功
-    //[[PromiseState]]用来表示Promise的3种状态
+    //创建已处理的Promise
+
+    //只接受一个参数并返回一个完成态的Promise
+    let promise1 = Promise.resolve(1),
+        promise2 = Promise.reject(2);
+
+    promise1.then(function (val) {
+        console.log(val)
+    })
+
+    promise2.catch(function (val) {
+        console.log(val)
+    })
 </script>
 </body>
 </html>

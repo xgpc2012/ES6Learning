@@ -9,18 +9,21 @@
 <script>
     //继承Promise
 
-
-    class MyPromise extends Promise{
-        success(resolve,reject){
-            return this.then(resolve,reject);
+    //既拥有Promise的then和catch 也有新增的方法
+    class MyPromise extends Promise {
+        success(resolve, reject) {
+            return this.then(resolve, reject);
         }
-        failure(reject){
+
+        failure(reject) {
             return this.catch(reject);
         }
     }
 
+    //使用MyPromise生成的Promise调用resolve会返回MyPromise的实例
+    //也就是可以调用success和failure
     //例如ajax的封装
-    let p1=new MyPromise((resolve,reject)=>{
+    let p1 = new MyPromise((resolve, reject) => {
         resolve(1);
     })
 

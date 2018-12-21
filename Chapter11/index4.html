@@ -9,14 +9,10 @@
 <script>
     //执行器错误
     let promise = new Promise(function (resolve, reject) {
-        try {
-            throw new Error("抛出异常")
-        } catch (e) {
-            reject(e)
-        }
+        throw new Error("抛出异常")
     })
 
-    //所有错误会被捕获并传入拒绝处理程序
+    //如果执行器内部抛出一个错误 则会立即调用Promise的拒绝处理程序
     promise.catch(function (error) {
         //抛出异常
         console.log(error.message);
@@ -24,17 +20,24 @@
 
     //全局Promise拒绝处理
 
-    let rejected=Promise.reject(2);
+    let rejected = Promise.reject(2);
 
     rejected.catch(function (val) {
         console.log(val);
     })
 
-    window.onrejectionhandled=function (event) {
+    //Promise被拒绝 没有提供拒绝处理程序时 触发
+    window.onunhandledrejection = function (event) {
+        //我被拒绝但没有处理程序
+        console.log(event.reason.message)
+    }
+
+    //Promise被拒绝 拒绝处理程序被调用 触发
+    window.onrejectionhandled = function (event) {
         console.log(event)
     }
 
-    rejected=Promise.reject(new Error("抛出异常"));
+    rejected = Promise.reject(new Error("我被拒绝但没有处理程序"));
 </script>
 </body>
 </html>

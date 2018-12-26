@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    //iterator
+
+    function createIterator(items) {
+        var i=0;
+
+        return {
+            next:function () {
+                var done=(i>=items.length);
+                var value=!done?items[i++]:undefined;
+
+                return {
+                    done:done,
+                    value:value
+                }
+            }
+        }
+    }
+
+    var iterator=createIterator([1,2,3]);
+
+    console.log(iterator.next());
+    console.log(iterator.next());
+    console.log(iterator.next());
+    console.log(iterator.next());
+
+    //*号 生成器是一种返回迭代器的函数
+    function *createIterator1() {
+        yield 1;
+        yield 2;
+        yield 3;
+    }
+
+    let iterator1=createIterator1();
+    console.log(iterator1.next());
+    console.log(iterator1.next());
+    console.log(iterator1.next());
+    console.log(iterator1.next());
+
+    [1,2,3].forEach((value, index, array) => {
+
+    })
+</script>
+</body>
+</html>

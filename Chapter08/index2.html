@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div class="div" id="div1"></div>
+<div class="div" id="div2"></div>
+<div class="div" id="div3"></div>
+
+<script>
+
+    let str1 = "123";
+    for (let a of str1) {
+        console.log(a);
+    }
+    console.log(str1[0]);
+    let DOMList = document.getElementsByClassName("div");
+    for (let dom of DOMList) {
+        console.log(dom.id);
+    }
+
+
+</script>
+</body>
+</html>
